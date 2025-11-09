@@ -1,5 +1,6 @@
 {
   "hosting": {
+        "site":"goeldesigns-7ea46",
     "public": "build",
     "ignore": [
       "firebase.json",
