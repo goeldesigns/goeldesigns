@@ -7,15 +7,38 @@ permissions:
   checks: write
   contents: read
   pull-requests: write
+
 jobs:
   build_and_preview:
     if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
     runs-on: ubuntu-latest
+
     steps:
+      # ✅ Step 1: Checkout source
       - uses: actions/checkout@v4
-      - run: npm install --legacy-peer-deps && npm ls date-fns
- && npm ci && npm run build
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+
+      # ✅ Step 2: Cache dependencies (optional but highly recommended)
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      # ✅ Step 3: Clean install with legacy peer deps
+      - name: Install dependencies
+        run: |
+          rm -rf node_modules package-lock.json
+          npm install --legacy-peer-deps
+
+      # ✅ Step 4: Build the project
+      - name: Build project
+        run: npm run build
+
+      # ✅ Step 5: Deploy preview to Firebase
+      - name: Deploy to Firebase Hosting preview
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_GOELDESIGNS_7EA46 }}
