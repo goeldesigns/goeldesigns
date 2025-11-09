@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
-import logo from 'figma:asset/3ccb6ac30a92321dfbacbf6b6fe2873cc83edd0b.png';
+import logo from './../assets/logo.png';
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,7 +29,6 @@ export function Navigation() {
     { name: 'Portfolio', id: 'portfolio' },
     { name: 'About', id: 'about' },
     { name: 'Testimonials', id: 'testimonials' },
-    { name: 'Contact', id: 'contact' },
   ];
 
   return (
