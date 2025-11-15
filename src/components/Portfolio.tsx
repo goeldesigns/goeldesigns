@@ -121,10 +121,10 @@ export function Portfolio() {
       </div>
     </section>
 
-    <PortfolioDetail 
+    {/* <PortfolioDetail 
       project={selectedProject} 
       onClose={() => setSelectedProject(null)} 
-    />
+    /> */}
     </>
   );
 }

@@ -25,10 +25,10 @@ export function Navigation() {
   };
 
   const navLinks = [
-    { name: 'Services', id: 'services' },
-    { name: 'Portfolio', id: 'portfolio' },
-    { name: 'About', id: 'about' },
-    { name: 'Testimonials', id: 'testimonials' },
+    { name: 'Services', id: 'services',visibile:'Y' },
+    { name: 'Portfolio', id: 'portfolio',visibile:'N' },
+    { name: 'About', id: 'about',visibile:'Y' },
+    { name: 'Testimonials', id: 'testimonials',visibile:'Y' },
   ];
 
   return (
@@ -54,6 +54,7 @@ export function Navigation() {
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <button
+                hidden={link.visibile==='N'}
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
                 className="text-foreground/80 hover:text-foreground transition-colors relative group"
