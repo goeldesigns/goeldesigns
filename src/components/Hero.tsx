@@ -81,13 +81,13 @@ export function Hero() {
             Get Started
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Button>
-          <Button
+          {/* <Button
             variant="outline"
             onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}
             className="border-2 border-teal-600 text-teal-600 hover:bg-teal-50 rounded-full px-8 py-6"
           >
             View Our Work
-          </Button>
+          </Button> */}
         </motion.div>
 
         {/* Stats */}
