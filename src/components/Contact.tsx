@@ -64,8 +64,8 @@ export function Contact() {
                 <Mail className="w-6 h-6 text-white" />
               </div>
               <h3 className="text-xl mb-2">Email Us</h3>
-              <p className="text-foreground/60">hello@goeldesigns.com</p>
-              <p className="text-foreground/60">support@goeldesigns.com</p>
+              <p className="text-foreground/60">ceo@goeldesigns.com</p>
+              <p className="text-foreground/60">cto@goeldesigns.com</p>
             </Card>
           </motion.div>
 
