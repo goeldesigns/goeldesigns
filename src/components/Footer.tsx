@@ -8,8 +8,8 @@ export function Footer() {
   const socialLinks = [
     { icon: Facebook, href: '#', label: 'Facebook' },
     { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
+    { icon: Instagram, href: 'https://www.instagram.com/goeldesigns/', label: 'Instagram' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/goel-designs/posts/?feedView=all', label: 'LinkedIn' },
     { icon: Github, href: '#', label: 'Github' },
   ];
 
@@ -86,6 +86,8 @@ export function Footer() {
                 <a
                   key={social.label}
                   href={social.href}
+                     target="_blank"
+      rel="noopener noreferrer"
                   aria-label={social.label}
                   className="w-10 h-10 rounded-full bg-teal-800 hover:bg-white hover:text-teal-900 flex items-center justify-center transition-all hover:scale-110"
                 >
