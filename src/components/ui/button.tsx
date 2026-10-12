@@ -1,58 +1,53 @@
-import * as React from "react";
-import { Slot } from "@radix-ui/react-slot@1.1.2";
-import { cva, type VariantProps } from "class-variance-authority@0.7.1";
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from "react";
+import { cn } from "@/lib/utils";
 
-import { cn } from "./utils";
+export type ButtonVariant = "primary" | "secondary" | "outline" | "ghost" | "link" | "white" | "outline-dark" | "ghost-dark";
+export type ButtonSize = "xs" | "sm" | "md" | "lg" | "xl";
 
-const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
-  {
-    variants: {
-      variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive:
-          "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
-        outline:
-          "border bg-background text-foreground hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost:
-          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
-        link: "text-primary underline-offset-4 hover:underline",
-      },
-      size: {
-        default: "h-9 px-4 py-2 has-[>svg]:px-3",
-        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
-        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
-        icon: "size-9 rounded-md",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-      size: "default",
-    },
-  },
-);
+const base =
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg font-medium select-none " +
+  "transition-[background-color,border-color,color,box-shadow,transform] duration-150 " +
+  "disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 " +
+  "[&_svg]:size-4 [&_svg]:shrink-0";
 
-function Button({
+const variants: Record<ButtonVariant, string> = {
+  // The single main action of a view. brand-500, white text, shadow-button.
+  primary: "bg-brand-500 text-white shadow-button hover:bg-brand-600 active:bg-brand-700",
+  // A strong second action next to primary.
+  secondary: "bg-brand-100 text-brand-600 hover:bg-brand-150 active:bg-brand-200",
+  // Neutral actions.
+  outline: "border border-line bg-surface text-ink shadow-card hover:border-line-strong hover:bg-canvas",
+  // Toolbar and dismiss actions.
+  ghost: "text-muted hover:bg-sunken hover:text-ink",
+  link: "h-auto! px-0! text-brand-500 underline-offset-4 hover:text-brand-600 hover:underline",
+  // On brand / night grounds (marketing only)
+  white: "bg-white text-brand-600 shadow-[0_1px_2px_rgb(20_18_48/0.12)] hover:bg-brand-50 active:bg-brand-100",
+  "outline-dark": "border border-white/15 text-white hover:border-white/30 hover:bg-white/8",
+  "ghost-dark": "text-white/75 hover:bg-white/8 hover:text-white",
+};
+
+const sizes: Record<ButtonSize, string> = {
+  xs: "h-7 px-2.5 text-[12px]",
+  sm: "h-8 px-3 text-[13px]",
+  md: "h-9 px-3.5 text-[14px]",
+  lg: "h-11 px-5 text-[15px] font-semibold [&_svg]:size-[18px]",
+  xl: "h-12 px-6 text-[15px] font-semibold [&_svg]:size-[18px]",
+};
+
+export function buttonClass({
+  variant = "primary",
+  size = "md",
   className,
-  variant,
-  size,
-  asChild = false,
-  ...props
-}: React.ComponentProps<"button"> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean;
-  }) {
-  const Comp = asChild ? Slot : "button";
-
-  return (
-    <Comp
-      data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
-      {...props}
-    />
-  );
+}: { variant?: ButtonVariant; size?: ButtonSize; className?: string } = {}) {
+  return cn(base, variants[variant], sizes[size], className);
 }
 
-export { Button, buttonVariants };
+type Common = { variant?: ButtonVariant; size?: ButtonSize };
+
+export function Button({ variant, size, className, type = "button", ...props }: Common & ButtonHTMLAttributes<HTMLButtonElement>) {
+  return <button type={type} className={buttonClass({ variant, size, className })} {...props} />;
+}
+
+export function ButtonLink({ variant, size, className, ...props }: Common & AnchorHTMLAttributes<HTMLAnchorElement>) {
+  return <a className={buttonClass({ variant, size, className })} {...props} />;
+}

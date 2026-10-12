@@ -1,7 +1,7 @@
 {
   "hosting": {
-        "site":"goeldesigns-7ea46",
-    "public": "build",
+    "site": "goeldesigns-7ea46",
+    "public": "out",
     "ignore": [
       "firebase.json",
       "**/.*",
