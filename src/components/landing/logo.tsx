@@ -1,28 +1,20 @@
 import { cn } from "@/lib/utils";
 
 /**
- * The logo plate: brand-500, radius-logo (10px), white stroke glyph — a G with a pen-tool anchor.
- * Pass size + radius classes together to resize it (defaults to 36px / radius-logo).
+ * The Goel Designs "GD" monogram (public/brand/gd-mark.png, transparent, ~1.41:1).
+ * Size it with a height or size class; it keeps its proportions inside the box.
  */
-export function LogoMark({ className = "size-9 rounded-logo" }: { className?: string }) {
+export function LogoMark({ className = "h-9 w-auto" }: { className?: string }) {
   return (
-    <span
+    <img
+      src="/brand/gd-mark.png"
+      alt=""
       aria-hidden="true"
-      className={cn("grid shrink-0 place-items-center bg-brand-500 text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.18)]", className)}
-    >
-      <svg
-        viewBox="0 0 24 24"
-        className="size-[62%]"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={2.2}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M16.95 7.05A7 7 0 1 0 19 12h-6" />
-        <circle cx="16.95" cy="7.05" r="1.7" fill="currentColor" stroke="none" />
-      </svg>
-    </span>
+      width={512}
+      height={364}
+      decoding="async"
+      className={cn("shrink-0 object-contain", className)}
+    />
   );
 }
 

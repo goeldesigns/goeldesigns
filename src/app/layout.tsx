@@ -53,7 +53,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               url: site.url,
               email: site.email,
               telephone: "+919368207505",
-              logo: `${site.url}/icon.svg`,
+              logo: `${site.url}/brand/goel-designs-logo.png`,
             }),
           }}
         />

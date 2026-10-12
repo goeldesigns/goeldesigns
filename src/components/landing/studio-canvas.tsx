@@ -78,7 +78,7 @@ export function StudioCanvas() {
       <div className="lp-frame-in overflow-hidden rounded-[16px] border border-line bg-surface shadow-frame">
         {/* Tool bar */}
         <div className="flex h-11 items-center gap-2.5 border-b border-line px-3">
-          <LogoMark className="size-6 rounded-md" />
+          <LogoMark className="h-6 w-auto" />
           <p className="hidden min-w-0 truncate text-[12.5px] font-medium text-ink sm:block">{project.name}</p>
 
           <div

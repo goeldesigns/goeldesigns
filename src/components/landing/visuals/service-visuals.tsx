@@ -118,9 +118,9 @@ export function LogoVisual() {
       <div className="hidden flex-col items-center gap-3 sm:flex">
         <p className="text-[10px] font-semibold tracking-[0.08em] text-subtle uppercase">Size test</p>
         <div className="flex items-end gap-2.5">
-          <LogoMark className="size-10 rounded-logo" />
-          <LogoMark className="size-7 rounded-lg" />
-          <LogoMark className="size-5 rounded-md" />
+          <LogoMark className="h-10 w-auto" />
+          <LogoMark className="h-7 w-auto" />
+          <LogoMark className="h-5 w-auto" />
         </div>
         <p className="font-mono text-[10px] text-muted">40 · 28 · 20 px</p>
       </div>
@@ -339,7 +339,7 @@ export function CollateralVisual() {
         <span className="mt-3 block h-4 w-12 rounded bg-white" />
       </div>
       <div className="relative w-[158px] rounded-lg border border-line bg-surface p-3 shadow-pop transition-transform group-hover:-translate-y-1.5">
-        <LogoMark className="size-6 rounded-md" />
+        <LogoMark className="h-6 w-auto" />
         <p className="mt-3 text-[11px] font-semibold text-ink">Goel Designs</p>
         <p className="text-[9.5px] text-muted">Design & development studio</p>
         <span className="mt-2 block h-1 w-16 rounded-full bg-line-strong" />

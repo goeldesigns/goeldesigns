@@ -54,7 +54,7 @@ export function LaunchCard() {
       <div className="relative overflow-hidden rounded-card border border-white/40 bg-surface shadow-pop">
         {/* Header */}
         <div className="flex items-center gap-2.5 border-b border-line px-4 py-3">
-          <LogoMark className="size-8 rounded-lg" />
+          <LogoMark className="h-8 w-auto" />
           <div className="min-w-0 flex-1">
             <p className="text-[14px] leading-tight font-semibold text-ink">Project launch</p>
             <p className="mt-0.5 flex items-center gap-1 text-[12px] text-muted">
